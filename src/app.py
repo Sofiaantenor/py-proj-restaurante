@@ -1,4 +1,5 @@
-from view.menu import menu
+from controller.restauranteController import RestauranteController
 
 if __name__ == "__main__":
-    menu()
+    app = RestauranteController()
+    app.executar()

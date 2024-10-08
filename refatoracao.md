@@ -6,10 +6,12 @@ View: Responsável pela interface com o usuário.
 Controller: Intermediário que manipula a lógica entre o Model e a View.
 
 Passo a Passo da Refatoração
-1. Criar o Model
+
+### 1. Criar o Model
 O Model representará o restaurante e suas operações.
 python
-# model.py
+# restaurantemodel.py
+```
 class Restaurante:
     def __init__(self, nome, tipo):
         self.nome = nome
@@ -36,11 +38,12 @@ class Restaurante:
         print("\nCardápio de Bebidas:")
         for bebida in self.cardapio_bebidas:
             print(f"{bebida['item']} - R${bebida['preco']}: {bebida['descricao']}")
-
+```
 2. Criar a View
 A View será responsável pela interação com o usuário.
 python
-# view.py
+# restauranteview.py
+```
 class RestauranteView:
     def introduction_page(self):
         message = '''
@@ -70,11 +73,12 @@ class RestauranteView:
 
     def mostrar_resultado(self, resultado):
         print(resultado)
-
+```
 3. Criar o Controller
 O Controller irá orquestrar as interações entre o Model e a View.
 python
-# controller.py
+# restauranteController.py
+```
 from model import Restaurante
 from view import RestauranteView
 
@@ -100,17 +104,20 @@ class RestauranteController:
                 exit()
             else:
                 print('\n Comando não encontrado!! \n\n')
+```
 
-4. Executar o Programa
+## 4. Executar o Programa
 Por fim, criamos um arquivo principal para executar a aplicação.
 python
 # main.py
+```
 from controller import RestauranteController
 
 if __name__ == "__main__":
     app = RestauranteController()
     app.executar()
 
+```
 Explicação da Refatoração
 Model (model.py)
 Classe Restaurante: Contém métodos para incluir pratos e bebidas no cardápio e listar informações sobre o restaurante e seu cardápio. A lógica de negócios está isolada aqui.
@@ -126,3 +133,15 @@ Facilidade de Manutenção: Alterações em uma parte do código não afetam as 
 Reutilização de Código: O Model pode ser reutilizado em diferentes Views ou Controllers.
 Testabilidade: Cada componente pode ser testado individualmente.
 Essa estrutura não apenas melhora a organização do código mas também facilita futuras expansões e manutenções na aplicação. Se precisar de mais ajuda ou exemplos adicionais, sinta-se à vontade para perguntar!
+
+
+/src
+    ├── controller
+    │   ├── __init__.py
+    │   └── restauranteController.py
+    ├── model
+    │   ├── __init__.py
+    │   └── restauranteModel.py
+    └── view
+        ├── __init__.py
+        └── restauranteView.py
